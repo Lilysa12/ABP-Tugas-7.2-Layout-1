@@ -7,15 +7,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Layout part 1',
+      title: 'Layout part 2',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Demo Layout part 1'),
+      home: const MyHomePage(title: 'Demo Layout part 2'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -31,103 +30,147 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // --- Data Dummy Riwayat Tes ---
+  final data = const [
+    {"tgl": "02/03/2022", "nilai": "150"},
+    {"tgl": "01/02/2022", "nilai": "140"},
+    {"tgl": "12/01/2022", "nilai": "170"},
+    {"tgl": "11/12/2021", "nilai": "110"},
+    {"tgl": "10/11/2021", "nilai": "180"},
+    {"tgl": "09/10/2021", "nilai": "190"},
+    {"tgl": "08/09/2021", "nilai": "160"},
+    {"tgl": "07/08/2021", "nilai": "155"},
+    {"tgl": "06/07/2021", "nilai": "145"},
+    {"tgl": "05/06/2021", "nilai": "140"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
-        child: Column(
-          children: [
-            // --- BAGIAN ATAS (Header & Profil) ---
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text("Welcome,", style: TextStyle(
-                        color: Color(0xFF7367F0),
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.25)
-                      ),
-                      Text(
-                        "2311102259 - Maulisa Elvita Sari", // <-- Nama dan NIM sudah disesuaikan
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF4B4B4B)),
-                      ),
-                    ],
-                  ),
-                  const CircleAvatar(
-                    radius: 20,
-                    // backgroundImage: AssetImage('assets/profpic.png'),
-                  ),
-                ],
-              )
-            ),
-
-            // --- BAGIAN TENGAH (Kartu Status Kelulusan TOEFL) ---
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 35),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [Color(0xFF4839EB), Color(0xFF7367F0)]),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Status tes TOEFL Anda:',
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text("LULUS", style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.25)
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          child: Column(
+            children: [
+              // --- BAGIAN ATAS (Header & Profil) ---
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text(
-                          'Listening\n      80',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        Text("Welcome,", style: TextStyle(
+                          color: Color(0xFF7367F0),
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.25)
                         ),
                         Text(
-                          'Structure\n      80',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        Text(
-                          'Reading\n      90',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          "2311102259 - Maulisa Elvita Sari", // <-- Identitas sudah disesuaikan
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF4B4B4B)),
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
+                    const CircleAvatar(
+                      radius: 20,
+                      // backgroundImage: AssetImage('assets/profpic.png'),
+                    ),
+                  ],
+                )
               ),
-            ),
 
-            // --- BAGIAN BAWAH (Judul Riwayat Tes) ---
-            Container(
-              child: const Text('Riwayat Tes', style: TextStyle(
-                color: Colors.black,
-                fontSize: 28,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.25))
-            ),
-          ]
+              // --- BAGIAN TENGAH (Kartu Status) ---
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 35),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: [Color(0xFF4839EB), Color(0xFF7367F0)]),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Status tes TOEFL Anda:',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text("LULUS", style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.25)
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Listening\n      80',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          Text(
+                            'Structure\n      80',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          Text(
+                            'Reading\n      90',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+
+              // --- BAGIAN BAWAH (Judul Riwayat) ---
+              Container(
+                child: const Text('Riwayat Tes', style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 0.25))
+              ),
+
+              // --- BAGIAN BARU: LISTVIEW SCROLL ---
+              Container(
+                height: 300, // Membatasi tinggi agar bisa di-scroll
+                child: ListView.builder(
+                  itemCount: data.length, // Menghitung jumlah data di array
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Text(
+                              'Tanggal tes:\nNilai:',
+                              style: TextStyle(color: Colors.blue, fontSize: 20),
+                            ),
+                            Text(
+                              data[index]["tgl"]! + '\n' + data[index]["nilai"]!,
+                              style: const TextStyle(color: Colors.blue, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10)
+                      ],
+                    );
+                  }
+                ),
+              )
+            ]
+          )
         )
       )
     );
